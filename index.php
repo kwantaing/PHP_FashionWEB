@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Request broker GuitarShop Application.
  *
