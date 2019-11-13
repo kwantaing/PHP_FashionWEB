@@ -657,17 +657,28 @@
                             <a class="dropdown-item" href="?ctlr=home&amp;action=featured">Featured Posts</a>
                           </li>
                         </ul>
-                      </li> 
-                      <li class="dropdown">
-                        <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=register">
-                          Register
-                        </a>
                       </li>
-                      <li class="dropdown">
-                        <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=login">
-                          Login
-                        </a>
-                      </li>
+                      <?php 
+                          if($_SESSION['userName']!= null || $_SESSION['email'] != null) {
+                            echo '                      
+                            <li class="dropdown">
+                              <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=logout">
+                                Logout
+                              </a>
+                            </li>';
+                          }else {
+                            echo ' <li class="dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=register">
+                              Register
+                            </a>
+                          </li>
+                          <li class="dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=login">
+                              Login
+                            </a>
+                          </li>';
+                          } ?>
+
                       <!--HELLO-------------------------------------------------------------------------------->
                       <li class="dropdown">
                         <a class="dropdown-item dropdown-toggle" href="?ctlr=home&amp;action=aboutUs">
