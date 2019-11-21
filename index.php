@@ -77,6 +77,14 @@ switch ($ctlr) {
             }
         }
         break;
+    case 'post':
+        $controller = new PostController();
+        if ($post) {
+            $action = 'newPostPOST';
+        }else {
+            $action = 'newPostGET';
+        }
+    break;
     case 'home':
         $controller = new HomeController();
         break;

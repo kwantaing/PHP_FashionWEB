@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  echo var_dump($_SESSION); 
+  // echo var_dump($_SESSION); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -650,7 +650,7 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li class="dropdown-submenu">
-                            <a class="dropdown-item" href="?ctlr=home&amp;action=newPost">Make a new post</a>
+                            <a class="dropdown-item" href="?ctlr=post&amp;action=newPost">Make a new post</a>
                             <!-- <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="contact-us-advanced.php">Contact Us - Advanced</a></li>
                               <li><a class="dropdown-item" href="contact-us.html">Contact Us - Basic</a></li>
@@ -663,25 +663,38 @@
                         </ul>
                       </li>
                       <?php 
-                          if($_SESSION['userName']!= null || $_SESSION['email'] != null) {
-                            echo '                      
+                          if(!isset($_SESSION['userName']) and !isset($_SESSION['email'])){
+                            if($_SESSION['userName']!= null || $_SESSION['email'] != null) {
+                              echo '                      
+                              <li class="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=logout">
+                                  Logout
+                                </a>
+                              </li>';
+                            }else {
+                              echo ' <li class="dropdown">
+                              <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=register">
+                                Register
+                              </a>
+                            </li>
                             <li class="dropdown">
-                              <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=logout">
-                                Logout
+                              <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=login">
+                                Login
                               </a>
                             </li>';
-                          }else {
-                            echo ' <li class="dropdown">
-                            <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=register">
-                              Register
-                            </a>
-                          </li>
-                          <li class="dropdown">
-                            <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=login">
-                              Login
-                            </a>
-                          </li>';
-                          } ?>
+                            }
+                         }else {
+                          echo ' <li class="dropdown">
+                          <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=register">
+                            Register
+                          </a>
+                        </li>
+                        <li class="dropdown">
+                          <a class="dropdown-item dropdown-toggle" href="?ctlr=user&amp;action=login">
+                            Login
+                          </a>
+                        </li>';
+                        } ?>
 
                       <!--HELLO-------------------------------------------------------------------------------->
                       <li class="dropdown">
