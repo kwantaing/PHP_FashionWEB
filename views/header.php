@@ -1,6 +1,8 @@
 <?php 
-  session_start();
-  // echo var_dump($_SESSION); 
+    if(!isset($_SESSION)) {
+      session_start();
+  }
+  echo var_dump($_SESSION); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -663,7 +665,7 @@
                         </ul>
                       </li>
                       <?php 
-                          if(!isset($_SESSION['userName']) and !isset($_SESSION['email'])){
+                          if(isset($_SESSION['userName']) and isset($_SESSION['email'])){
                             if($_SESSION['userName']!= null || $_SESSION['email'] != null) {
                               echo '                      
                               <li class="dropdown">
