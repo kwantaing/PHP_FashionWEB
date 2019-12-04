@@ -15,9 +15,14 @@ include_once(APP_NON_WEB_BASE_DIR . 'includes/cis4270Includes.php');
 // missing.
 $post = true;
 if (hRequestMethod() === 'GET') {
+    if(!isset($_SESSION)) {
+        session_start();
+    }
     $vm = null;
     $actionGET = hGET('action');
     $ctlrGET = hGET('ctlr');
+    $idGET = hGET('id');
+    $_SESSION['post_id'] = isset($idGET) ? $idGET : '';
     $ctlr = isset($ctlrGET) ? $ctlrGET : '';
     $actionSet = isset($actionGET) ? $actionGET : '';
 
@@ -84,6 +89,8 @@ switch ($ctlr) {
                 $action = 'newPostPOST';
             }else {
                 $action = 'newPostGET';
+            }
+            if($action === 'readPost'){
             }
         }
         break;
